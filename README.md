@@ -3,12 +3,12 @@
 Useful extensions for Zsh for WSL using Unbutu.
 
 ## Requeriments
- zsh.
- oh my zsh.
- WSL.
+ **zsh.&nbsp
+ **oh my zsh.&nbsp
+ **WSL.&nbsp
  
 ## Extensions
- zsh-syntax-highlighting.
- zsh-autosuggestions.
- fzf.
+ **zsh-syntax-highlighting.&nbsp
+ **zsh-autosuggestions.&nbsp
+ **fzf.&nbsp
  
