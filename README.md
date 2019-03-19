@@ -31,12 +31,18 @@ Useful extensions for Zsh for WSL using Ubuntu.
 **Oh My Zsh:</br>**
 <br/>
 curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh; zsh
+<br/>
+<br/>
 **zsh-syntax-highlighting:**<br/>
 <br/>
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting <br/>
+<br/>
 **zsh-autosuggestions:<br/>**
 <br/>
+<br/>
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions<br/>
+<br/>
+<br/>
 **fzf:<br/>**
 <br/>
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
