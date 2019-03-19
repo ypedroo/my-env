@@ -2,6 +2,30 @@
 
 Useful extensions for Zsh for WSL using Ubuntu.
 
+## Requeriments
+<ol>
+<li>Zsh</li>
+<li>Oh My Zsh</li>
+<li>WSL</li>
+</ol>
+ 
+## Extensions
+<ol>
+<li>zsh-syntax-highlighting</li>
+<li>zsh-autosuggestions</li>
+<li>fzf</li>
+<li>hypernpm</li>
+<li>hyperterm-summon</li> 
+</ol>
+ 
+ ## Themes
+<ol>
+<li>verminal</li>
+<li>hyper-corubo</li>
+<li>hyperterm-chesterish</li>
+<li>hyper-night-owl</li>
+</ol>
+
 ## Instalation
 For the ZHS:</br>
 Oh My Zsh:</br>
@@ -14,31 +38,9 @@ fzf:<br/>
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 <br/>
 <br/>
-#After git clone run nano ~/.zshrc and add on the plugins array as the img:</br>
+# After git clone run nano  ~/.zshrc  and add on the plugins array as the img:</br>
 For the Hyper Config:<br/>
-Copy the Js file and paste it to the .hyper .js
-
-## Requeriments
-<ol>
-<li>Zsh</li>
-<li>Oh My Zsh</li>
-<li>WSL</li>
-</ol>
- 
-## Extensions
-<ol>
-<li>zsh-syntax-highlighting</li>
-<li>zsh-autosuggestions</li>
-<li>fz</li>f
-<li>hypernpm</li>
-<li>hyperterm-summon</li> 
-</ol>
- 
- ## Themes
-<ol>
-<li>zsh-syntax-highlighting</li>
-<li> zsh-autosuggestions</li>
-<li>fzf</li>
-</ol>
+Open Hyper and type Ctrl + , then
+copy the Js file and paste it to the .hyper.js file.
 
 
