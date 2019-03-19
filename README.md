@@ -52,7 +52,7 @@ Open Hyper and type Ctrl + , then
 copy the Js file and paste it to the .hyper.js file.
 
 ## Special Thanks
-[This awesome article of @Ivan Augusto](https://medium.com/@ivanaugustobd/seu-terminal-pode-ser-muito-muito-mais-produtivo-3159c8ef77b2)
+[This awesome article from @Ivan Augusto](https://medium.com/@ivanaugustobd/seu-terminal-pode-ser-muito-muito-mais-produtivo-3159c8ef77b2)
 
 
 
