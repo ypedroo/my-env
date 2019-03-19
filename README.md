@@ -27,7 +27,7 @@ Useful extensions for Zsh for WSL using Ubuntu.
 </ol>
 
 ## Instalation
-For the ZHS:</br>
+### For the ZHS:</br>
 Oh My Zsh:</br>
 curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh; zsh
 zsh-syntax-highlighting:<br/>
@@ -38,8 +38,9 @@ fzf:<br/>
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 <br/>
 <br/>
-# After git clone run nano  ~/.zshrc  and add on the plugins array as the img:</br>
-For the Hyper Config:<br/>
+After git clone run **nano ~/.zshrc**  and add on the plugins array as the img:</br>
+![Alt text](assets/Anotação 2019-03-19 120738.png?raw=true "Title")
+### For the Hyper Config:<br/>
 Open Hyper and type Ctrl + , then
 copy the Js file and paste it to the .hyper.js file.
 
