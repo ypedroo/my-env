@@ -37,15 +37,14 @@ curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools
 <br/>
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting <br/>
 <br/>
-**zsh-autosuggestions:<br/>**
+**zsh-autosuggestions:**
 <br/>
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions<br/>
 <br/>
 <br/>
-**fzf:<br/>**
+**fzf:**
 <br/>
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-<br/>
 <br/>
 After git clone run **nano ~/.zshrc**  and add on the plugins array as the img:</br>
 ![alt text](https://github.com/ypedroo/my-hyper-config-files/blob/master/assets/Anota%C3%A7%C3%A3o%202019-03-19%20120738.png)
