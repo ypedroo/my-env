@@ -39,13 +39,13 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 <br/>
 <br/>
 After git clone run **nano ~/.zshrc**  and add on the plugins array as the img:</br>
-![alt text] (https://github.com/ypedroo/my-hyper-config-files/blob/master/assets/Anota%C3%A7%C3%A3o%202019-03-19%20120738.png)
+![alt text](https://github.com/ypedroo/my-hyper-config-files/blob/master/assets/Anota%C3%A7%C3%A3o%202019-03-19%20120738.png)
 ### For the Hyper Config:<br/>
 Open Hyper and type Ctrl + , then
 copy the Js file and paste it to the .hyper.js file.
 
 ## Special Thanks
-[This awesome article] (https://medium.com/@ivanaugustobd/seu-terminal-pode-ser-muito-muito-mais-produtivo-3159c8ef77b2)
-[from:] (https://medium.com/@ivanaugustobd)
+[This awesome article](https://medium.com/@ivanaugustobd/seu-terminal-pode-ser-muito-muito-mais-produtivo-3159c8ef77b2)
+[from:](https://medium.com/@ivanaugustobd)
 
 
