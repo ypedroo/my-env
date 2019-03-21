@@ -1,4 +1,4 @@
-# my-hyper-config-files :computer:
+# dot-files :computer:
 
 Useful extensions for Zsh for WSL using Ubuntu.
 
