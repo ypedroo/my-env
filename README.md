@@ -46,7 +46,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/z
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 <br/>
 After git clone run **nano ~/.zshrc**  and add on the plugins array as the img:</br>
-![alt text](assets/Anotação 2019-03-19 120738.png)
+![alt text](assets/Anota%C3%A7%C3%A3o%202019-03-19%20120738.pn)
 ### For the Hyper Config:<br/>
 Open Hyper and type ``Ctrl + ``, then
 copy the Js file and paste it to the .hyper.js file.
