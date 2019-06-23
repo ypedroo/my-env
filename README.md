@@ -1,4 +1,4 @@
-# my-hyper-config-files
+# dot-files :computer:
 
 Useful extensions for Zsh for WSL using Ubuntu.
 
@@ -28,24 +28,31 @@ Useful extensions for Zsh for WSL using Ubuntu.
 
 ## Instalation
 ### For the ZHS:</br>
-**Oh My Zsh:</br>**
+**Oh My Zsh:**
+<br/>
 curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh; zsh
-zsh-syntax-highlighting:<br/>
+<br/>
+<br/>
+**zsh-syntax-highlighting:**
+<br/>
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting <br/>
-**zsh-autosuggestions:<br/>**
+<br/>
+**zsh-autosuggestions:**
+<br/>
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions<br/>
-**fzf:<br/>**
+<br/>
+**fzf:**
+<br/>
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 <br/>
-<br/>
 After git clone run **nano ~/.zshrc**  and add on the plugins array as the img:</br>
-![alt text](https://github.com/ypedroo/my-hyper-config-files/blob/master/assets/Anota%C3%A7%C3%A3o%202019-03-19%20120738.png)
+![alt text](assets/Anota%C3%A7%C3%A3o%202019-03-19%20120738.pn)
 ### For the Hyper Config:<br/>
-Open Hyper and type Ctrl + , then
+Open Hyper and type ``Ctrl + ``, then
 copy the Js file and paste it to the .hyper.js file.
 
 ## Special Thanks
-[This awesome article of @Ivan Augusto](https://medium.com/@ivanaugustobd/seu-terminal-pode-ser-muito-muito-mais-produtivo-3159c8ef77b2)
+[This awesome article from @Ivan Augusto](https://medium.com/@ivanaugustobd/seu-terminal-pode-ser-muito-muito-mais-produtivo-3159c8ef77b2)
 
 
 
