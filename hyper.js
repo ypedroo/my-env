@@ -158,7 +158,6 @@ module.exports = {
 
   plugins: [
 'hyper-statusline',
-'hyper-corubo',
 'hypercwd',
 'hyper-dark-scrollbar'
 ],
