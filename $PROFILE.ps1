@@ -6,9 +6,11 @@ function devFolder {cd -Path "C:\dev"}
 
 #git context scripts
 function add { git add .}
-function status {git status}
+function git st {git status}
 function push {git push}
-function pull {git pull}
+function pull {pull --rebase origin}
+function git co {git checkout}
+function git new {git checkout -b}
 function containers {docker ps -a}
 
 #Modules
