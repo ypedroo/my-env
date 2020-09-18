@@ -102,24 +102,24 @@ alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #Git
-alias gcl = "git clone"
-alias gst = "git status"
-alias gpull = "git pull"
-alias gpush = "git push"
-alias gdiff = "git diff"
-alias gc = "git commit -v"
-alias gnew = "git checkout -b"
-alias gco = "git checkout"
-alias gadd = "git add ."
+alias clone="git clone"
+alias status="git status"
+alias pull="git pull"
+alias push="git push"
+alias diff="git diff"
+alias gc="git commit -v"
+alias new="git checkout -b"
+alias co="git checkout"
+alias add="git add ."
 
 #Docker
-alias docker = "sudo docker"
-alias dps = "docker ps -a"
-alias drun = "docker run"
+alias docker="sudo docker"
+alias dps="docker ps -a"
+alias drun="docker run"
 
 #Navigation
-alias gotoDev = 'cd ~/dev'
+alias devf='cd ~/dev'
 
 #general
-alias npm = "sudo npm"
-alias yarn = "sudo yarn"
+alias npm="sudo npm"
+alias yarn="sudo yarn"
