@@ -98,8 +98,8 @@ source $ZSH/oh-my-zsh.sh
 #Aliases
 # ======================
 # zsh
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="code ~/.zshrc"
+alias ohmyzsh="code ~/.oh-my-zsh"
 
 #Git
 alias clone="git clone"
@@ -123,3 +123,6 @@ alias devf='cd ~/dev'
 #general
 alias npm="sudo npm"
 alias yarn="sudo yarn"
+
+#Projects
+alias gotoContracts='cd ~/dev/contracts-node-api'
