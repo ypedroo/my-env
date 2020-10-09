@@ -113,7 +113,6 @@ alias co="git checkout"
 alias add="git add ."
 
 #Docker
-alias docker="sudo docker"
 alias dps="docker ps -a"
 alias drun="docker run"
 
