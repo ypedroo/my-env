@@ -17,7 +17,6 @@ function install {
 install chromium-browser
 install curl
 install git
-install nodejs
 install wget
 install fonts-firacode
 
