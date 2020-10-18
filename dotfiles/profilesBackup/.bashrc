@@ -135,13 +135,10 @@ alias gco = "git checkout"
 alias gadd = "git add ."
 
 #Docker
-alias docker = "sudo docker"
 alias dps = "docker ps -a"
 alias drun = "docker run"
 
 #Navigation
 alias gotoDev = 'cd ~/dev'
 
-#general
-alias npm = "sudo npm"
-alias yarn = "sudo yarn"
+alias node=nodejs

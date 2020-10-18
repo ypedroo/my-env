@@ -101,6 +101,8 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 
+alias node=nodejs
+
 #Git
 alias clone="git clone"
 alias status="git status"

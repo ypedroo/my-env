@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt update
+sudo apt update && sudo apt full-upgrade -y
 
 function install {
   which $1 &> /dev/null
@@ -14,23 +14,12 @@ function install {
 }
 
 # Basics
-install awscli
 install chromium-browser
 install curl
-install exfat-utils
-install file
 install git
-install htop
-install nmap
-install openvpn
-install tmux
-install vim
 install nodejs
-install insomnia
-
-# Image processing
-install jpegoptim
-install optipng
+install wget
+install fonts-firacode
 
 # Fun stuff
 install figlet
