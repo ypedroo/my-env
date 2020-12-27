@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/ypedro/.oh-my-zsh"
+export ZSH="/home/ynoa/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -101,8 +101,6 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 
-alias node=nodejs
-
 #Git
 alias clone="git clone"
 alias status="git status"
@@ -121,9 +119,11 @@ alias drun="docker run"
 #Navigation
 alias devf='cd ~/dev'
 
-#general
-alias npm="sudo npm"
-alias yarn="sudo yarn"
 
 #Projects
 alias gotoContracts='cd ~/dev/contracts-node-api'
+alias qwkin='cd ~/dev/qwkin-api'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
