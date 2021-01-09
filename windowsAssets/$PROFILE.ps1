@@ -1,27 +1,27 @@
 #goto Scripts for general projects take path and use it here
-function devFolder {cd -Path "C:\dev"}
-function gotoDrop {cd -Path "C:\dev\drop-csharp"}
-function gotoPlural {cd -Path "C:\dev\pluraL\pluralsight-exercises"}
-function gotoCli {cd -Path "C:\Dev\remote-cli\"}
-function gotoApiContracts {cd -Path "C:\Dev\contracts-api"}
+#function gotoMoneyWeb {cd -Path "C:\Users\ynoa_mota\Documents\dev\money-admin-api"}
+function qwkin {Set-Location -Path "C:\users\ynoap\dev\qwkin-api"}
+function devf {Set-Location -Path "C:\users\ynoap\dev"}
 
-#git context scripts
+#git functions
 function add { git add .}
 function status {git status}
 function push {git push}
 function pull {git pull}
-function diff {git diff}
-function co {git checkout}
-function new {git checkout -b}
-function containers {docker ps -a}
-function jp {jupyter notebook}
-#Modules
-Import-Module posh-git
-Import-Module oh-my-posh
-#Theme
-Set-Theme Powerlevel10k-Classic 
+function clone {git clone}
+#docker functions
+function dps {docker ps -a}
+function dropImages{docker image rm $(docker-image ls -aq)}
+function startDB{docker-compose up -d db}
+
+
+Import-Module 'C:\Users\ynoap\OneDrive\Docs\Documentos\WindowsPowerShell\Modules\oh-my-posh\2.0.399\oh-my-posh.psd1'
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
+Import-Module oh-my-posh
+Set-Theme robbyrussell
+
+Import-Module 'C:\tools\poshgit\dahlbyk-posh-git-9bda399\src\posh-git.psd1'
