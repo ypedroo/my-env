@@ -1,19 +1,21 @@
-#goto Scripts for general projects take path and use it here
-#function gotoMoneyWeb {cd -Path "C:\Users\ynoa_mota\Documents\dev\money-admin-api"}
-function qwkin {Set-Location -Path "C:\users\ynoap\dev\qwkin-api"}
 function devf {Set-Location -Path "C:\users\ynoap\dev"}
 
 #git functions
 function add { git add .}
-function status {git status}
+function st {git status}
 function push {git push}
 function pull {git pull}
 function clone {git clone}
+function co {git checkout $args}
+function gcommit {git commit -a}
+function newb {git checkout -b}
 #docker functions
 function dps {docker ps -a}
-function dropImages{docker image rm $(docker-image ls -aq)}
+function dropImages{docker image rm $(docker image ls -aq)}
 function startDB{docker-compose up -d db}
 
+
+// TODO update path to relative paths
 
 Import-Module 'C:\Users\ynoap\OneDrive\Docs\Documentos\WindowsPowerShell\Modules\oh-my-posh\2.0.399\oh-my-posh.psd1'
 # Chocolatey profile
