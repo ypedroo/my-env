@@ -8,7 +8,7 @@ function pull {git pull}
 function clone {git clone}
 function co {git checkout $args}
 function gcommit {git commit -a}
-function newb {git checkout -b}
+function newb {git checkout -b $args}
 #docker functions
 function dps {docker ps -a}
 function dropImages{docker image rm $(docker image ls -aq)}
