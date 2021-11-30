@@ -1,29 +1,24 @@
 function devf {Set-Location -Path "C:\users\ynoap\dev"}
-
-#git functions
+function pmenos {Set-Location -Path "C:\users\ynoap\work"}
+function biz {Set-Location -Path "C:\users\ynoap\biz"}
+function profimetrics {Set-Location -Path "C:\users\ynoap\work\COM_RT_IntergracaoProfimetrics"}
+function platformprofimetrics {Set-Location -Path "C:\users\ynoap\work\PRE_RT_PlataformaProfimetrics"}
+#git context scripts
 function add { git add .}
 function st {git status}
 function push {git push}
 function pull {git pull}
+function diff {git diff}
+function co {git checkout}
+function new {git checkout -b}
 function clone {git clone}
-function co {git checkout $args}
 function gcommit {git commit -a}
-function newb {git checkout -b $args}
-#docker functions
-function dps {docker ps -a}
-function dropImages{docker image rm $(docker image ls -aq)}
-function startDB{docker-compose up -d db}
+#docker
+function containers {docker ps -a}
+#ides
+function rider {rider64.exe .}
 
-
-// TODO update path to relative paths
-
-Import-Module 'C:\Users\ynoap\OneDrive\Docs\Documentos\WindowsPowerShell\Modules\oh-my-posh\2.0.399\oh-my-posh.psd1'
-# Chocolatey profile
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
-}
 Import-Module oh-my-posh
-Set-Theme robbyrussell
-
-Import-Module 'C:\tools\poshgit\dahlbyk-posh-git-9bda399\src\posh-git.psd1'
+Import-Module posh-git
+Set-PoshPrompt -Theme C:\Users\ynoap\OneDrive\Docs\oh-my-posh-main\themes\star.omp.json
+Invoke-Expression (&starship init powershell)
