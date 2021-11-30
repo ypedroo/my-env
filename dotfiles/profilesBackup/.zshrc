@@ -103,11 +103,11 @@ alias ohmyzsh="code ~/.oh-my-zsh"
 
 #Git
 alias clone="git clone"
-alias status="git status"
+alias st="git status"
 alias pull="git pull"
 alias push="git push"
 alias diff="git diff"
-alias gc="git commit -v"
+alias gcommit="git commit -v"
 alias new="git checkout -b"
 alias co="git checkout"
 alias add="git add ."
@@ -120,9 +120,7 @@ alias drun="docker run"
 alias devf='cd ~/dev'
 
 
-#Projects
-alias gotoContracts='cd ~/dev/contracts-node-api'
-alias qwkin='cd ~/dev/qwkin-api'
+eval "$(starship init zsh)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
