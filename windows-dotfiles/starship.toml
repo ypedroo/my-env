@@ -1,0 +1,19 @@
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+discharging_symbol = "💦"
+
+[git_status]
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+conflicted = "🏳"
+staged = '[++\($count\)](green)'
+up_to_date = "✓"
+
+[time]
+disabled = false
+format = '[\[ $time \]]($style) '
+time_format = "%T"
+utc_time_offset = "-3"
+time_range = "10:00:00-14:00:00"

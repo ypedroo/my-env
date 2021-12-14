@@ -19,5 +19,7 @@ function rider {rider64.exe}
 
 Import-Module oh-my-posh
 Import-Module posh-git
+#by being in onedrive it will alway be synced on windows
 Set-PoshPrompt -Theme C:\Users\ynoap\OneDrive\Docs\oh-my-posh-main\themes\star.omp.json
+Import-Module Terminal-Icons
 Invoke-Expression (&starship init powershell)
