@@ -13,8 +13,6 @@ function clone {git clone}
 function gcommit {git commit -a}
 #docker
 function containers {docker ps -a}
-#ides
-function rider {rider64.exe}
 
 Import-Module oh-my-posh
 Import-Module posh-git
