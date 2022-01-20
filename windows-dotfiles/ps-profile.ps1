@@ -1,6 +1,5 @@
 function devf {Set-Location -Path "C:\users\ynoap\dev"}
 #git context scripts
-Set-Alias grep findstr
 Set-Alias g git
 Set-Alias vim neovim
 function add {git add .}
