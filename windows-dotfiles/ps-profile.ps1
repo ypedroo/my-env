@@ -1,5 +1,6 @@
+#Locaiton scripts
 function devf {Set-Location -Path "C:\users\ynoap\dev"}
-#git context scripts
+#Aliases
 Set-Alias g git
 Set-Alias vim neovim
 function add {git add .}
@@ -13,7 +14,7 @@ function clone {git clone}
 function gcommit {git commit -a}
 #docker
 function containers {docker ps -a}
-
+#Imports
 Import-Module oh-my-posh
 Import-Module posh-git
 #by being in onedrive it will alway be synced on windows
