@@ -1,4 +1,4 @@
-# 👋 Welcome to Ynoa's Dotfiles!
+# 👋 Welcome to my Dotfiles!
 
 These are the base dotfiles that I start with when I set up a new environment. Over the years, I've assembled a collection of useful tools and configurations that speed up my workflow and make system tasks more enjoyable.
 
