@@ -1,58 +1,101 @@
 #!/bin/zsh
 
+# Function to check command success
+check_command() {
+    if [ $? -ne 0 ]; then
+        echo "Error: $1 failed"
+        exit 1
+    fi
+}
+
 # Check for Homebrew, install if we don't have it
 if ! command -v brew &> /dev/null; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    check_command "Homebrew installation"
 fi
 
 echo "Updating Homebrew..."
 brew update
+check_command "Homebrew update"
 
 echo "Installing General Tools..."
 brew install --cask microsoft-edge
+check_command "Microsoft Edge installation"
 brew install --cask google-chrome
+check_command "Google Chrome installation"
 brew install --cask spotify
+check_command "Spotify installation"
 brew install --cask notion
+check_command "Notion installation"
 brew install --cask bitwarden
+check_command "Bitwarden installation"
 brew install neofetch
+check_command "Neofetch installation"
 brew install btop
+check_command "btop installation"
+brew install --cask iterm2
+check_command "iTerm2 installation"
+brew install --cask alfred
+check_command "Alfred installation"
+brew install --cask microsoft-outlook
+check_command "Microsoft Outlook installation"
 
 echo "Installing Communication Tools..."
 brew install --cask discord
+check_command "Discord installation"
 brew install --cask slack
+check_command "Slack installation"
 brew install --cask microsoft-teams
-brew install --cask skype
+check_command "Microsoft Teams installation"
 
 echo "Installing Development Tools..."
 brew install --cask dotnet
+check_command "dotnet installation"
+brew install --cask dotnet-sdk
+check_command "dotnet-sdk installation"
 brew install nvm
+check_command "nvm installation"
 brew install yarn
+check_command "yarn installation"
 brew install --cask jetbrains-toolbox
+check_command "JetBrains Toolbox installation"
 brew install --cask visual-studio-code
+check_command "Visual Studio Code installation"
 brew install --cask docker
+check_command "Docker installation"
 
 # Install AWS CLI
 echo "Installing AWS CLI..."
 curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+check_command "AWS CLI download"
 sudo installer -pkg AWSCLIV2.pkg -target /
+check_command "AWS CLI installation"
 rm AWSCLIV2.pkg
 
 # Install Azure CLI
 echo "Installing Azure CLI..."
 brew install azure-cli
+check_command "Azure CLI installation"
 
 echo "Installing oh-my-zsh..."
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+check_command "oh-my-zsh installation"
 
 echo "Installing powerlevel10k theme..."
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+check_command "powerlevel10k installation"
 
 echo "Installing zsh-autosuggestions plugin..."
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+check_command "zsh-autosuggestions installation"
 
 echo "Installing zsh-syntax-highlighting plugin..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+check_command "zsh-syntax-highlighting installation"
+
+echo "Backing up existing zsh config..."
+mv ~/.zshrc ~/.zshrc.backup
 
 echo "Setting up zsh config..."
 cat << EOF > ~/.zshrc
@@ -67,18 +110,21 @@ fi
 # Your zsh config continues here...
 EOF
 
+echo "Backing up existing git config..."
+mv ~/.gitconfig ~/.gitconfig.backup
+
 echo "Setting up git config..."
 cat << EOF > ~/.gitconfig
 [user]
-	name = Ynoa Pedro
-	email = ynoa.pedro@outlook.com
+    name = Ynoa Pedro
+    email = ynoa.pedro@outlook.com
 [push]
-	default = current
+    default = current
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
 EOF
 
 echo "Done!"
