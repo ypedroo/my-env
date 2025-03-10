@@ -19,7 +19,6 @@ A whole bunch of awesome stuff! Here's a list:
   - Discord
   - Slack
   - Microsoft Teams
-  - Skype
 
 - 💻 Development Tools
   - .NET
@@ -43,32 +42,52 @@ A whole bunch of awesome stuff! Here's a list:
 
 ## 🚀 Quick Start
 
-Follow these steps to get my environment up and running in no time:
+### macOS Setup
 
-1. Clone this repository to your local machine.
+1. Clone this repository:
     ```bash
     git clone https://github.com/ypedroo/my-env.git
     ```
 
-2. Navigate to the repository folder.
+3. Navigate to the repository:
     ```bash
     cd my-env
     ```
 
-3. Make the setup script executable.
+4. Make the macOS setup script executable:
+    ```bash
+    chmod +x mac-files/setup.sh
+    ```
+
+5. Run the macOS setup script:
+    ```bash
+    sh mac-setup.sh
+    ```
+
+### Other Systems Setup
+
+1. Clone this repository:
+    ```bash
+    git clone https://github.com/ypedroo/my-env.git
+    ```
+
+2. Navigate to the repository:
+    ```bash
+    cd my-env
+    ```
+
+3. Make the setup script executable:
     ```bash
     chmod +x setup.sh
     ```
 
-4. Run the setup script.
+4. Run the setup script:
     ```bash
     ./setup.sh
     ```
 
-And voila! Your environment should be up and running with my favourite configurations and tools.
-
 ## ⚠️ Disclaimer
 
-Please review the setup script before running it. I am not responsible for any unforeseen consequences of running this script on your system.
+Please review the setup scripts before running them. I am not responsible for any unforeseen consequences of running these scripts on your system.
 
 Enjoy your new environment! 🎉
