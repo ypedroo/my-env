@@ -171,6 +171,7 @@ if [ "$INSTALL_GENERAL" = true ]; then
     install_if_not_exists "obsidian" "cask"
     install_if_not_exists "windows-app" "cask"
     install_if_not_exists "lazydocker"
+    install_if_not_exists "shottr" "cask"
 fi
 
 # Communication Tools Installation
