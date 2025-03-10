@@ -30,16 +30,27 @@ brew install --cask notion
 check_command "Notion installation"
 brew install --cask bitwarden
 check_command "Bitwarden installation"
-brew install neofetch
-check_command "Neofetch installation"
 brew install btop
 check_command "btop installation"
-brew install --cask iterm2
-check_command "iTerm2 installation"
-brew install --cask alfred
-check_command "Alfred installation"
+brew install ghostty
+check_command "Ghostty installation"
+brew install --cask raycast
+check_command "Raycast installation"
 brew install --cask microsoft-outlook
 check_command "Microsoft Outlook installation"
+brew install neofetch
+check_command "Neofetch installation"
+brew install --cask rectangle
+check_command "Rectangle installation"
+brew install --cask bartender
+check_command "Bartender installation"
+brew install --cask obsidian
+check_command "Obsidian installation"
+brew install --cask windows-app
+check_command "Windows App installation"
+brew install lazydocker
+check_command "Lazydocker installation"
+
 
 echo "Installing Communication Tools..."
 brew install --cask discord
@@ -64,6 +75,10 @@ brew install --cask visual-studio-code
 check_command "Visual Studio Code installation"
 brew install --cask docker
 check_command "Docker installation"
+brew install neovim
+check_command "Neovim installation"
+brew install --cask postman
+check_command "Postman installation"
 
 # Install AWS CLI
 echo "Installing AWS CLI..."
@@ -127,4 +142,4 @@ cat << EOF > ~/.gitconfig
     clean = git-lfs clean -- %f
 EOF
 
-echo "Done!"
+echo "Welcome back! 🚀"
