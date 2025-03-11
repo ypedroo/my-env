@@ -165,7 +165,7 @@ if [ "$INSTALL_GENERAL" = true ]; then
     install_if_not_exists "ghostty"
     install_if_not_exists "raycast" "cask"
     install_if_not_exists "microsoft-outlook" "cask"
-    install_if_not_exists "neofetch"
+    install_if_not_exists "fastfetch"
     install_if_not_exists "rectangle" "cask"
     install_if_not_exists "bartender" "cask"
     install_if_not_exists "obsidian" "cask"
