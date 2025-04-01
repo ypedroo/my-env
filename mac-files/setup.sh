@@ -162,6 +162,7 @@ if [ "$INSTALL_GENERAL" = true ]; then
     install_if_not_exists "notion" "cask"
     install_if_not_exists "bitwarden" "cask"
     install_if_not_exists "btop"
+    install_if_not_exists "ghostty" "cask"
     install_if_not_exists "iterm2" "cask"
     install_if_not_exists "raycast" "cask"
     install_if_not_exists "microsoft-outlook" "cask"
