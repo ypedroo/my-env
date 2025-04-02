@@ -3,8 +3,8 @@
 # Mac Setup Script
 # Author: Ynoa Pedro
 # Description: Automated setup script for macOS development environment
-# Version: 1.0
-# Last Updated: March 10, 2025
+# Version: 1.1
+# Last Updated: April 01, 2025
 
 # Enable error handling
 set -e
