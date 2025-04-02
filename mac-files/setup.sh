@@ -9,10 +9,6 @@
 # Enable error handling
 set -e
 
-# Setup logging
-LOG_FILE="$HOME/setup_$(date +%Y%m%d_%H%M%S).log"
-exec 1> >(tee -a "$LOG_FILE") 2>&1
-
 # Check CPU architecture
 if [[ $(uname -m) == "arm64" ]]; then
     ARCH="arm64"
@@ -56,56 +52,59 @@ install_if_not_exists() {
     if ! brew list $package &>/dev/null; then
         echo "Installing $package..."
         if [ "$type" = "cask" ]; then
-            brew install --cask $package
+            gum spin --spinner dot --title "Installing $package..." -- brew install --cask $package
         else
-            brew install $package
+            gum spin --spinner dot --title "Installing $package..." -- brew install $package
         fi
         check_command "$package installation"
     else
-        echo "$package is already installed, skipping..."
+        gum spin --spinner dot --title "Skipping $package installation..." -- echo "$package is already installed"
     fi
 }
 
-# Parse command-line arguments
-INSTALL_GENERAL=true
-INSTALL_DEV=true
-INSTALL_COMM=true
-INSTALL_SHELL=true
 
-while [[ $# -gt 0 ]]; do
-    case $1 in
-        --no-general)
-            INSTALL_GENERAL=false
-            shift
-            ;;
-        --no-dev)
-            INSTALL_DEV=false
-            shift
-            ;;
-        --no-comm)
-            INSTALL_COMM=false
-            shift
-            ;;
-        --no-shell)
-            INSTALL_SHELL=false
-            shift
-            ;;
-        --help)
-            echo "Usage: $0 [options]"
-            echo "Options:"
-            echo "  --no-general    Skip general tools installation"
-            echo "  --no-dev        Skip development tools installation"
-            echo "  --no-comm       Skip communication tools installation"
-            echo "  --no-shell      Skip shell customization"
-            echo "  --help          Show this help message"
-            exit 0
-            ;;
-        *)
-            echo "Unknown option: $1"
-            exit 1
-            ;;
-    esac
-done
+# Install gum if not present
+install_if_not_exists "gum"
+
+# Menu function
+show_menu() {
+    gum style \
+        --border normal \
+        --border-foreground 212 \
+        --margin "1 2" \
+        --padding "1 2" \
+    "Welcome back lets setup your workspace! 🚀"
+    echo "Please select which components you'd like to install:"
+    
+    INSTALL_GENERAL=$(gum choose --selected=true "Install" "Skip" --header="📦 General Tools")
+    INSTALL_GENERAL=$([ "$INSTALL_GENERAL" = "Install" ] && echo "true" || echo "false")
+    
+    INSTALL_DEV=$(gum choose --selected=true "Install" "Skip" --header="💻 Development Tools")
+    INSTALL_DEV=$([ "$INSTALL_DEV" = "Install" ] && echo "true" || echo "false")
+    
+    INSTALL_COMM=$(gum choose --selected=true "Install" "Skip" --header="📞 Communication Tools")
+    INSTALL_COMM=$([ "$INSTALL_COMM" = "Install" ] && echo "true" || echo "false")
+    
+    INSTALL_SHELL=$(gum choose --selected=true "Install" "Skip" --header="🐚 Shell Configuration")
+    INSTALL_SHELL=$([ "$INSTALL_SHELL" = "Install" ] && echo "true" || echo "false")
+    
+    # Show summary
+    echo "\n=== Installation Summary ===\n"
+    echo "General Tools: $([ "$INSTALL_GENERAL" = "true" ] && echo "✅" || echo "❌")"
+    echo "Development Tools: $([ "$INSTALL_DEV" = "true" ] && echo "✅" || echo "❌")"
+    echo "Communication Tools: $([ "$INSTALL_COMM" = "true" ] && echo "✅" || echo "❌")"
+    echo "Shell Configuration: $([ "$INSTALL_SHELL" = "true" ] && echo "✅" || echo "❌")"
+
+    
+    # Confirm installation
+    if ! gum confirm "Do you want to proceed with the installation?"; then
+        echo "Installation cancelled"
+        exit 0
+    fi
+}
+
+# Remove the argument parsing section and replace with menu
+show_menu
 
 # Check for Homebrew, install if we don't have it
 if ! command -v brew &> /dev/null; then
@@ -120,19 +119,18 @@ if ! command -v brew &> /dev/null; then
     fi
 fi
 
-echo "Updating Homebrew..."
-brew update
+gum spin --spinner dot --title "Updating Homebrew..." -- \
+    brew update
 check_command "Homebrew update"
 
 # Install required tools if missing
 echo "\n=== Installing Required Tools ===\n"
 for tool in curl git jq; do
     if ! command -v $tool &> /dev/null; then
-        echo "Installing $tool..."
-        brew install $tool
+        gum spin --spinner dot --title "Installing $tool..." -- brew install $tool
         check_command "$tool installation"
     else
-        echo "$tool is already installed, skipping..."
+        gum spin --spinner dot --title "Skipping $tool installation..." -- echo "$tool is already installed"
     fi
 done
 
@@ -331,13 +329,46 @@ echo "\n=== Cleaning up... ===\n"
 brew cleanup
 rm -f *.pkg *.tmp "$RESUME_FILE" 2>/dev/null
 
-# Final message
-echo "\n=== Setup Complete! ===\n"
-echo "Setup completed successfully! Log file: $LOG_FILE"
-echo "\nPlease restart your terminal to apply all changes."
-echo "\nNext steps:"
-echo "1. Configure Powerlevel10k: p10k configure"
-echo "2. Set up your SSH keys for Git"
-echo "3. Log in to your applications"
-echo "4. Review the log file for any warnings: $LOG_FILE"
-echo "\nWelcome back! 🚀"
+
+# Create setup summary and display final messages
+SUMMARY_TEXT=$(cat << EOF
+📋 Setup Summary:
+───────────────
+✅ Setup completed successfully!
+📝 Log file: $LOG_FILE
+
+⚡ Next Steps:
+────────────
+1. 🔧 Configure Shell: Run p10k configure
+2. 🔑 Set up SSH keys for Git
+3. 🔐 Log in to your applications
+4. 📝 Review the log file for warnings
+EOF
+)
+
+# Final messages with improved formatting
+gum style \
+    --border double \
+    --border-foreground 212 \
+    --margin "1 2" \
+    --padding "2 4" \
+    --align center \
+    --width 60 \
+    "🎉 Installation Complete! 🎉"
+
+gum style \
+    --border normal \
+    --border-foreground 45 \
+    --margin "1 2" \
+    --padding "2 4" \
+    --width 60 \
+    "$SUMMARY_TEXT"
+
+gum style \
+    --border double \
+    --border-foreground 212 \
+    --margin "1 2" \
+    --padding "2 4" \
+    --align center \
+    --width 60 \
+    "🚀 Please restart your terminal to apply changes! 🚀"
