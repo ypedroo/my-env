@@ -32,7 +32,7 @@ fi
 
 # Save progress function
 save_progress() {
-    echo "$1" > "$RESUME_FILE"
+    echo "$1" >"$RESUME_FILE"
 }
 
 # Function to check command success
@@ -62,7 +62,6 @@ install_if_not_exists() {
     fi
 }
 
-
 # Install gum if not present
 install_if_not_exists "gum"
 
@@ -73,21 +72,21 @@ show_menu() {
         --border-foreground 212 \
         --margin "1 2" \
         --padding "1 2" \
-    "Welcome back lets setup your workspace! 🚀"
+        "Welcome back lets setup your workspace! 🚀"
     echo "Please select which components you'd like to install:"
-    
+
     INSTALL_GENERAL=$(gum choose --selected=true "Install" "Skip" --header="📦 General Tools")
     INSTALL_GENERAL=$([ "$INSTALL_GENERAL" = "Install" ] && echo "true" || echo "false")
-    
+
     INSTALL_DEV=$(gum choose --selected=true "Install" "Skip" --header="💻 Development Tools")
     INSTALL_DEV=$([ "$INSTALL_DEV" = "Install" ] && echo "true" || echo "false")
-    
+
     INSTALL_COMM=$(gum choose --selected=true "Install" "Skip" --header="📞 Communication Tools")
     INSTALL_COMM=$([ "$INSTALL_COMM" = "Install" ] && echo "true" || echo "false")
-    
+
     INSTALL_SHELL=$(gum choose --selected=true "Install" "Skip" --header="🐚 Shell Configuration")
     INSTALL_SHELL=$([ "$INSTALL_SHELL" = "Install" ] && echo "true" || echo "false")
-    
+
     # Show summary
     echo "\n=== Installation Summary ===\n"
     echo "General Tools: $([ "$INSTALL_GENERAL" = "true" ] && echo "✅" || echo "❌")"
@@ -95,7 +94,6 @@ show_menu() {
     echo "Communication Tools: $([ "$INSTALL_COMM" = "true" ] && echo "✅" || echo "❌")"
     echo "Shell Configuration: $([ "$INSTALL_SHELL" = "true" ] && echo "✅" || echo "❌")"
 
-    
     # Confirm installation
     if ! gum confirm "Do you want to proceed with the installation?"; then
         echo "Installation cancelled"
@@ -107,14 +105,14 @@ show_menu() {
 show_menu
 
 # Check for Homebrew, install if we don't have it
-if ! command -v brew &> /dev/null; then
+if ! command -v brew &>/dev/null; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     check_command "Homebrew installation"
 
     # Add Homebrew to PATH for Apple Silicon Macs
     if [[ $(uname -m) == "arm64" ]]; then
-        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>~/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
     fi
 fi
@@ -126,7 +124,7 @@ check_command "Homebrew update"
 # Install required tools if missing
 echo "\n=== Installing Required Tools ===\n"
 for tool in curl git jq; do
-    if ! command -v $tool &> /dev/null; then
+    if ! command -v $tool &>/dev/null; then
         gum spin --spinner dot --title "Installing $tool..." -- brew install $tool
         check_command "$tool installation"
     else
@@ -136,7 +134,7 @@ done
 
 # Verify all required tools are installed
 for tool in curl git jq; do
-    command -v $tool >/dev/null 2>&1 || { 
+    command -v $tool >/dev/null 2>&1 || {
         echo "Error: Failed to install $tool" >&2
         exit 1
     }
@@ -144,12 +142,11 @@ done
 
 # Verify all required tools are installed
 for tool in curl git jq; do
-    command -v $tool >/dev/null 2>&1 || { 
+    command -v $tool >/dev/null 2>&1 || {
         echo "Error: Failed to install $tool" >&2
         exit 1
     }
 done
-
 
 # General Tools Installation
 if [ "$INSTALL_GENERAL" = true ]; then
@@ -184,14 +181,17 @@ fi
 # Development Tools Installation
 if [ "$INSTALL_DEV" = true ]; then
     echo "\n=== Installing Development Tools ===\n"
-    
+
     # .NET SDK Installation
     echo "Installing .NET SDK..."
     RELEASES_JSON=$(curl -s https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json)
     check_command ".NET releases metadata download"
 
     DOTNET_LATEST_LTS=$(echo "$RELEASES_JSON" | jq -r '.["releases-index"][] | select(."release-type"=="lts" and ."support-phase"=="active") | ."channel-version"' | sort -rV | head -n1)
-    [ -n "$DOTNET_LATEST_LTS" ] || { echo "Error: Could not determine latest .NET LTS version" >&2; exit 1; }
+    [ -n "$DOTNET_LATEST_LTS" ] || {
+        echo "Error: Could not determine latest .NET LTS version" >&2
+        exit 1
+    }
 
     echo "Found .NET SDK LTS version: ${DOTNET_LATEST_LTS}"
 
@@ -199,7 +199,10 @@ if [ "$INSTALL_DEV" = true ]; then
     check_command ".NET version-specific metadata download"
 
     DOTNET_PKG_URL=$(echo "$RELEASE_JSON" | jq -r '.releases[0].sdk.files[] | select(.name | endswith("osx-'$ARCH'.pkg")) | .url')
-    [ -n "$DOTNET_PKG_URL" ] || { echo "Error: Could not determine download URL" >&2; exit 1; }
+    [ -n "$DOTNET_PKG_URL" ] || {
+        echo "Error: Could not determine download URL" >&2
+        exit 1
+    }
 
     curl -L -o dotnet-sdk.pkg "$DOTNET_PKG_URL"
     check_command ".NET SDK download"
@@ -214,6 +217,7 @@ if [ "$INSTALL_DEV" = true ]; then
     install_if_not_exists "jetbrains-toolbox" "cask"
     install_if_not_exists "visual-studio-code" "cask"
     install_if_not_exists "docker" "cask"
+    install_if_not_exists "orbstack" "cask"
     install_if_not_exists "neovim"
     install_if_not_exists "postman" "cask"
 
@@ -231,7 +235,7 @@ fi
 # Shell Configuration
 if [ "$INSTALL_SHELL" = true ]; then
     echo "\n=== Configuring Shell Environment ===\n"
-    
+
     # Set zsh as default shell
     chsh -s $(which zsh)
     check_command "Setting zsh as default shell"
@@ -266,7 +270,7 @@ if [ "$INSTALL_SHELL" = true ]; then
 
     # Create new zsh config
     echo "Setting up new zsh configuration..."
-    cat << 'EOF' > ~/.zshrc
+    cat <<'EOF' >~/.zshrc
 # Enable Powerlevel10k instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -306,7 +310,7 @@ EOF
 
     # Create new git config
     echo "Setting up new git configuration..."
-    cat << EOF > ~/.gitconfig
+    cat <<EOF >~/.gitconfig
 [user]
     name = Ynoa Pedro
     email = ynoa.pedro@outlook.com
@@ -329,9 +333,9 @@ echo "\n=== Cleaning up... ===\n"
 brew cleanup
 rm -f *.pkg *.tmp "$RESUME_FILE" 2>/dev/null
 
-
 # Create setup summary and display final messages
-SUMMARY_TEXT=$(cat << EOF
+SUMMARY_TEXT=$(
+    cat <<EOF
 📋 Setup Summary:
 ───────────────
 ✅ Setup completed successfully!
