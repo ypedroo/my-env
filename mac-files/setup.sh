@@ -220,6 +220,8 @@ if [ "$INSTALL_DEV" = true ]; then
     install_if_not_exists "orbstack" "cask"
     install_if_not_exists "neovim"
     install_if_not_exists "postman" "cask"
+    install_if_not_exists "zed" "cask"
+    install_if_not_exists "opencode"
 
     # AWS CLI Installation
     echo "Installing AWS CLI..."

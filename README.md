@@ -34,7 +34,9 @@ A whole bunch of awesome daily drivers for me! Here's a list:
   - Visual Studio Code
   - Docker
   - Neovim
+  - Zed
   - Postman
+  - OpenCode
 
 - ☁️ Cloud Tools
   - AWS CLI
