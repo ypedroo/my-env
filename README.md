@@ -16,7 +16,7 @@ A whole bunch of awesome daily drivers for me! Here's a list:
   - Btop
   - Rectangle
   - Raycast
-  - Bartender
+  - Thaw
   - Obsidian
   - Windows App
   - LazyDocker
@@ -32,7 +32,7 @@ A whole bunch of awesome daily drivers for me! Here's a list:
   - Yarn
   - JetBrains Toolbox
   - Visual Studio Code
-  - Docker
+  - OrbStack
   - Neovim
   - Zed
   - Postman
@@ -49,25 +49,27 @@ A whole bunch of awesome daily drivers for me! Here's a list:
   - ZSH Syntax Highlighting
 
 - ⚙️ Git Configuration
-  - Default user setup
+  - Optional user identity setup
   - LFS configuration
   - VSCode as default editor
   - Main as default branch
 
 ## 🚀 Quick Start
 
-### Installation Options
+### macOS Installation Options
 
 The setup script supports several installation options:
 
 ```bash
-./setup.sh [options]
+./mac-files/setup.sh [options]
 
 Options:
   --no-general    Skip general tools installation
   --no-dev        Skip development tools installation
   --no-comm       Skip communication tools installation
   --no-shell      Skip shell customization
+  --non-interactive Use defaults without prompting
+  --reset         Clear saved progress before starting
   --help          Show this help message
 ```
 
@@ -105,13 +107,17 @@ Options:
 
 ## 📋 Features
 
-- ✅ Automatic installation of all required tools
+- ✅ Repeatable installation of the selected tools
 - ✅ Smart .NET SDK installation (latest LTS version)
 - ✅ Progress tracking and resume capability
 - ✅ Comprehensive logging
 - ✅ Selective installation options
-- ✅ Automatic backup of existing configurations
+- ✅ Timestamped backup of an existing `.zshrc`
+- ✅ Existing `.gitconfig` settings are preserved
 - ✅ Architecture detection (Apple Silicon/Intel)
+
+The macOS catalog installs OrbStack for container workflows and Thaw as the
+menu-bar utility. It does not install Docker Desktop or Bartender.
 
 ## 📝 Post-Installation
 
@@ -125,7 +131,15 @@ After running the script:
 
 ## 🔄 Resume Capability
 
-If the script is interrupted, you can resume from where it left off by running it again. The script will prompt you to continue from the last successful step.
+If the script is interrupted, run it again and confirm the resume prompt. Progress
+is stored under `~/Library/Application Support/mac-setup/`. Use `--reset` to
+discard the saved checkpoint and start over.
+
+Git identity is not changed unless both of these environment variables are set:
+
+```bash
+GIT_USER_NAME="Your Name" GIT_USER_EMAIL="you@example.com" ./mac-files/setup.sh
+```
 
 ## ⚠️ Disclaimer
 
