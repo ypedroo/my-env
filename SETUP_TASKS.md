@@ -76,38 +76,6 @@ This backlog captures the improvements identified during the setup-script review
 - Document prerequisites, network requirements, sudo prompts, backup behavior, and resume behavior.
 - Remove claims about automatic backup or resume until those features are implemented and tested.
 
-## Priority 2 — repair Linux setup scripts
-
-### L01 — Fix Linux entrypoint and shell portability
-
-- Correct the `snapInstall.sh` filename/case mismatch.
-- Run scripts relative to the repository/script location rather than the caller’s current directory.
-- Add strict error handling, quoting, prerequisite checks, and a consistent sudo strategy.
-
-### L02 — Repair Snap installation helper
-
-- Pass through package options such as `--classic`.
-- Use a valid Snap install invocation.
-- Detect installed snaps using Snap metadata rather than only `which`.
-
-### L03 — Repair Linux .NET installer
-
-- Fix the concatenated `dpkg`/`apt` command.
-- Stop pinning the repository to Ubuntu 20.04.
-- Select a supported SDK/runtime version and make the install repeatable.
-
-### L04 — Repair Linux zsh installer
-
-- Replace undefined `info` and `success` calls or define them.
-- Make oh-my-zsh and plugin installation idempotent.
-- Avoid overwriting an existing `.zshrc` without a backup.
-
-### L05 — Modernize Linux package/repository setup
-
-- Replace deprecated `apt-key` usage for Docker and Yarn repositories.
-- Add repository signing-key validation and architecture/distribution checks.
-- Clean up downloaded packages after successful installation.
-
 ## Validation task
 
 ### V01 — Test in disposable environments before implementation merge
@@ -116,5 +84,4 @@ This backlog captures the improvements identified during the setup-script review
 - Test macOS paths with Homebrew already installed and on a clean-machine simulation.
 - Test interrupted/resumed runs.
 - Test reruns with existing `.zshrc`, `.gitconfig`, packages, and backups.
-- Test Linux scripts on a supported Ubuntu image.
 - Confirm the final package catalog does not install Bartender or Docker Desktop.
