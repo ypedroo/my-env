@@ -3,11 +3,15 @@
 # Mac Setup Script
 # Author: Ynoa Pedro
 # Description: Automated setup script for macOS development environment
-# Version: 1.1
-# Last Updated: April 01, 2025
+# Version: 1.1.1
+# Last Updated: March 09, 2026
 
 # Enable error handling
 set -e
+
+# Define log file
+LOG_FILE="$HOME/setup_$(date +%Y%m%d_%H%M%S).log"
+exec > >(tee -a "$LOG_FILE") 2>&1
 
 # Check CPU architecture
 if [[ $(uname -m) == "arm64" ]]; then
@@ -51,14 +55,26 @@ install_if_not_exists() {
     local type=$2
     if ! brew list $package &>/dev/null; then
         echo "Installing $package..."
-        if [ "$type" = "cask" ]; then
-            gum spin --spinner dot --title "Installing $package..." -- brew install --cask $package
+        if command -v gum &>/dev/null; then
+            if [ "$type" = "cask" ]; then
+                gum spin --spinner dot --title "Installing $package..." -- brew install --cask $package
+            else
+                gum spin --spinner dot --title "Installing $package..." -- brew install $package
+            fi
         else
-            gum spin --spinner dot --title "Installing $package..." -- brew install $package
+            if [ "$type" = "cask" ]; then
+                brew install --cask $package
+            else
+                brew install $package
+            fi
         fi
         check_command "$package installation"
     else
-        gum spin --spinner dot --title "Skipping $package installation..." -- echo "$package is already installed"
+        if command -v gum &>/dev/null; then
+            gum spin --spinner dot --title "Skipping $package installation..." -- echo "$package is already installed"
+        else
+            echo "$package is already installed"
+        fi
     fi
 }
 
@@ -67,6 +83,14 @@ install_if_not_exists "gum"
 
 # Menu function
 show_menu() {
+    if ! command -v gum &>/dev/null; then
+        echo "Gum not found. Installing essential components..."
+        INSTALL_GENERAL=true
+        INSTALL_DEV=true
+        INSTALL_COMM=true
+        INSTALL_SHELL=true
+        return
+    fi
     gum style \
         --border normal \
         --border-foreground 212 \
@@ -130,14 +154,6 @@ for tool in curl git jq; do
     else
         gum spin --spinner dot --title "Skipping $tool installation..." -- echo "$tool is already installed"
     fi
-done
-
-# Verify all required tools are installed
-for tool in curl git jq; do
-    command -v $tool >/dev/null 2>&1 || {
-        echo "Error: Failed to install $tool" >&2
-        exit 1
-    }
 done
 
 # Verify all required tools are installed
